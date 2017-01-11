@@ -16,9 +16,9 @@ app.get('/:firstname/:lastname', function (request, response) {
 app.get('/jedi/:firstname/:lastname', function (request, response) {
     var first = request.params.firstname;
     var last = request.params.lastname;
-    var jediName = last.slice(0, 3) + first.slice(0, 2);
+    var jedi = last.slice(0, 3) + first.slice(0, 2);
 
-    response.send(["Hello", jediName].join(" "));
+    response.send(["Hello", jedi].join(" "));
 });
 
 app.get('/headers', function (request, response) {
