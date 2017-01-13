@@ -32,4 +32,6 @@ app.get('/items', function (request, response) {
     response.json(storage.items);
 });
 
+// run on local host 8080
 app.listen(process.env.PORT || 8080, process.env.IP);
+console.log("running on local host 8080");
