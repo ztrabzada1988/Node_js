@@ -24,8 +24,13 @@ var Storage = {
     },
 
     // update function (PUT)
-    put: function (id) {
-
+    update: function (name, id) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (this.items[i].id == id) {
+                this.items[i].name = name;
+                return this.items[i];
+            }
+        }
     }
 
 };
@@ -74,9 +79,10 @@ app.delete('/items/:id', jsonParser, function (request, response) {
 // add the PUT (update) endpoint
 app.put('/items/:id', jsonParser, function (request, response) {
     var id = request.params.id;
+    var name = request.body.name;
 
-    storage.put(id);
-    response.status()
+    var item = storage.update(name, id);
+    response.status(200).json(item);
 })
 
 // run on local host 8080
