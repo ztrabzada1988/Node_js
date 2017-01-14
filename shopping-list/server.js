@@ -5,6 +5,7 @@ var jsonParser = bodyParser.json();
 
 
 var Storage = {
+    // add function (POST)
     add: function (name) {
         var item = {
             name: name,
@@ -15,11 +16,18 @@ var Storage = {
         return item;
     },
 
+    // delete function (DELETE)
     delete: function (id) {
 
         this.items = this.items.filter(item => item.id != id);
         return this.items;
+    },
+
+    // update function (PUT)
+    put: function (id) {
+
     }
+
 };
 
 var createStorage = function () {
@@ -43,7 +51,7 @@ app.get('/items', function (request, response) {
 });
 
 
-// add the POST route (endpoint)
+// add the POST (create) route (endpoint)
 app.post('/items', jsonParser, function (request, response) {
     // if the name property from request body is missing:
     if (!('name' in request.body)) {
@@ -54,7 +62,7 @@ app.post('/items', jsonParser, function (request, response) {
     response.status(201).json(item);
 });
 
-// add the DELETE endpoint or route
+// add the DELETE (delete) endpoint or route
 
 app.delete('/items/:id', jsonParser, function (request, response) {
     var id = request.params.id;
@@ -62,6 +70,14 @@ app.delete('/items/:id', jsonParser, function (request, response) {
     storage.delete(id);
     response.status(200).json(id);
 });
+
+// add the PUT (update) endpoint
+app.put('/items/:id', jsonParser, function (request, response) {
+    var id = request.params.id;
+
+    storage.put(id);
+    response.status()
+})
 
 // run on local host 8080
 app.listen(process.env.PORT || 8080, process.env.IP);
