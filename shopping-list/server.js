@@ -29,6 +29,8 @@ var Storage = {
             if (this.items[i].id == id) {
                 this.items[i].name = name;
                 return this.items[i];
+            } else {
+                this.items[i].id == id;
             }
         }
     }
