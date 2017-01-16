@@ -88,3 +88,7 @@ app.put('/items/:id', jsonParser, function (request, response) {
 // run on local host 8080
 app.listen(process.env.PORT || 8080, process.env.IP);
 console.log("running on local host 8080");
+
+// export for test-server.js
+exports.app = app;
+exports.storage = storage;
