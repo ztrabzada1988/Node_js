@@ -61,9 +61,9 @@ describe('Shopping List', function () {
     it('should edit an item on PUT', function (done) {
         chai.request(app)
             .put('/items')
-            .update(name, id)
+            // .update()
             .end(function (err, res) {
-                res.equal(err, null);
+                should.equal(err, null);
                 res.should.have.status(201);
                 res.should.be.json;
                 res.body.should.be.a('object');
@@ -71,7 +71,8 @@ describe('Shopping List', function () {
                 res.body.should.have.property('id');
                 res.body.name.should.be.a('string');
                 res.body.id.should.be.a('number');
-            })
+                done();
+            });
     });
 
     it('should delete an item on delete');
