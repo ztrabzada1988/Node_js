@@ -11,7 +11,20 @@ MongoClient.connect('mongodb://localhost/', function (err, db) {
     var collection = db.collection('snippets');
 
     var create = function (name, content) {
-        db.close();
+        var snippet = {
+            name: name,
+            content: content;
+        };
+
+        collection.insert(snippet, function (err, result) {
+            if (err) {
+                console.error("Could not create snippet", name);
+                db.close();
+                return;
+            }
+            console.log("Created snippet", name);
+            db.close();
+        });
     };
 
     var read = function (name) {
