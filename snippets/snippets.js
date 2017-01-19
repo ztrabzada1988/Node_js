@@ -13,7 +13,7 @@ MongoClient.connect('mongodb://localhost/', function (err, db) {
     var create = function (name, content) {
         var snippet = {
             name: name,
-            content: content;
+            content: content
         };
 
         collection.insert(snippet, function (err, result) {
@@ -31,7 +31,7 @@ MongoClient.connect('mongodb://localhost/', function (err, db) {
         var query = {
             name: name
         };
-        collection.fineOne(query, function (err, snippet) {
+        collection.findOne(query, function (err, snippet) {
             if (!snippet || err) {
                 console.error("Could not read snippet", name);
                 db.close();
@@ -44,11 +44,42 @@ MongoClient.connect('mongodb://localhost/', function (err, db) {
     };
 
     var update = function (name, content) {
-        db.close();
+        var query = {
+            name: name
+        };
+
+        var update = {
+            $set: {
+                content: content
+            }
+        };
+
+        collection.findAndModify(query, null, update, function (err, result) {
+            var snippet = result.value;
+            if (!snippet || err) {
+                console.error("Could not update snippet", name);
+                db.close();
+                return;
+            }
+            console.log("Updated snippet", snippet.name);
+            db.close();
+        })
     };
 
     var del = function (name, content) {
-        db.close();
+        var query = {
+            name: name
+        };
+        collection.findAndRemove(query, function (err, result) {
+            var snippet = result.value;
+            if (!snippet || err) {
+                console.error("Could not delete snippet", name);
+                db.close();
+                return;
+            }
+            console.log("Deleted snippet", snippet.name);
+            db.close();
+        });
     };
 
     var main = function () {
@@ -66,8 +97,7 @@ MongoClient.connect('mongodb://localhost/', function (err, db) {
         }
 
     }
-};
 
-main();
+    main();
 
 });
