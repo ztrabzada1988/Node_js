@@ -13,7 +13,7 @@ mongoose.connection.once('open', function () {
             type: String,
             unique: true
         },
-        content: String;
+        content: String
     });
 
     var Snippet = mongoose.model('Snippet', snippetSchema);
@@ -29,11 +29,11 @@ mongoose.connection.once('open', function () {
         Snippet.create(snippet, function (err, snippet) {
             if (err || !snippet) {
                 console.error("Could not create snippet", name);
-                mongoose.disconnet();
+                mongoose.disconnect();
                 return;
             }
             console.log("Created snippet", snippet.name);
-            mongoose.disconnet();
+            mongoose.disconnect();
         });
     };
 
@@ -43,11 +43,12 @@ mongoose.connection.once('open', function () {
         }, function (err, snippet) {
             if (err || !snippet) {
                 console.error("Could not read snippet", name);
-                mongoose.disconnet();
+                mongoose.disconnect();
                 return;
             }
-            console.log("Updated snippet", snippet.name);
-            mongoose.disconnet();
+            console.log("Read snippet", snippet.name);
+            console.log(snippet.content);
+            mongoose.disconnect();
         });
     };
 
