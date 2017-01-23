@@ -8,6 +8,9 @@ var app = express();
 
 var Item = require('./models/item');
 
+app.use(bodyParser.json());
+app.use(express.static('public'));
+
 app.get('/items', function (req, res) {
     Item.find(function (err, items) {
         if (err) {
@@ -38,8 +41,6 @@ app.use('*', function (req, res) {
     });
 });
 
-app.use(bodyParser.json());
-app.use(express.static('public'));
 
 var runServer = function (callback) {
     mongoose.connect(config.DATABASE_URL, function (err) {
