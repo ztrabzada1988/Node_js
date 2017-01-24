@@ -1,13 +1,18 @@
 {
     "name": "mongo-shopping-list",
     "version": "1.0.0",
-    "description": "",
+    "description": "persistent db for shopping-list",
     "main": "server.js",
     "scripts": {
         "test": "mocha"
     },
     "author": "Zubair Trabzada",
     "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "express": "^4.14.0",
+        "mongoose": "^4.7.2"
+    },
     "devDependencies": {
         "chai": "^3.5.0",
         "chai-http": "^3.0.0",
