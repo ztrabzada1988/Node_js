@@ -35,6 +35,38 @@ app.post('/items', function (req, res) {
     });
 });
 
+app.put('/items/:id', function (req, res) {
+    Item.findOneAndUpdate({
+            _id: req.params.id
+        }, {
+            name: req.body.name
+        },
+        function (err, item) {
+            if (err) {
+                return res.status(400).json({
+                    message: 'Item not found'
+                });
+            }
+            res.status(200).json(item);
+        });
+});
+
+app.delete('/items/:id', function (req, res) {
+    Item.findOneAndRemove({
+            _id: req.params.id
+        }, {
+            name: req.body.name
+        },
+        function (err, item) {
+            if (err) {
+                return res.status(400).json({
+                    message: 'Item not found'
+                });
+            }
+            res.status(200).json(item);
+        });
+});
+
 app.use('*', function (req, res) {
     res.status(404).json({
         message: 'Not Found'
