@@ -1,16 +1,16 @@
 {
-  "name": "mongo-shopping-list",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Zubair Trabzada",
-  "license": "ISC",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
-    "mocha": "^3.2.0"
-  }
+    "name": "mongo-shopping-list",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "author": "Zubair Trabzada",
+    "license": "ISC",
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "chai-http": "^3.0.0",
+        "mocha": "^3.2.0"
+    }
 }
