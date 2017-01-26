@@ -1,0 +1,17 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+addons: 
+apt: 
+sources:
+- mongodb-3.2-precise
+packages:
+- mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: Z2CqyV+avAgZFV/z/1joKEKGS3+6+2fBfD/Jh4PWwH+Lt2PZutHlhuvbpypYtIN3DpJmszqTqO73+4FYtFckCAeGy41u4s7rMGqapp1wWLNanAxKiUrNmVXfhXvfbWEO+rbA3sUHMnhvOMzjyP8Ady4j59RCVvV1ai/KVz0nsGmcZ0ywu7gHtmU5vrO2uWAnDnAPgCek50fJZ19q9s1aASbQkdaojkh47BlyV2Ar+S8CaW7j1AwgBurk1bL8WzjRZXc5dRh4xApAlY7XJDJSI5+2yh/1Xjfm1EjZiPRHnjEOJc6dEYn393RtO8QEO/9x/gX8OknRTFlX5H1kUItsYoG/Byg+DHJ9IB9Nn9855Bg7E5WfnGoEHu+6U5HD6zsqRMRLWlXnEsVDgxo6DQslEx2MOhy9J1Y+1KN6IAiEacjsxE0vFJgEef6kinjYYfkN1+MjFjl+NOdVWMfo4LsJ40EHCyIfFBa+PAuQgzYP+cMwoFVDah9AaaBnqX5Z+EPHGvwXKYiIfAxMcBDkeryTr0RSYWjPkMmAlSgItAZx8I9o30SY63EJ3SeMsmVBHRcfnPeGA0EE5rZDgzEW/d+BkVu6zQ865srkPHUbep5sYlucKwnm6y2nGq/oHvz1xQW01CzOX/csfm8s4QXY8nhBrXxyUEUpTn3FmfXvS/M+sQ4=
+  app: obscure-harbor-45579
+  on:
+    repo: ztrabzada1988/mongodb-shopping-list
